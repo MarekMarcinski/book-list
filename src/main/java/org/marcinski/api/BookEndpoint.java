@@ -4,14 +4,12 @@ import org.marcinski.model.Book;
 import org.marcinski.repository.BookRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class BookEndpoint {
@@ -39,6 +37,16 @@ public class BookEndpoint {
             return ResponseEntity.created(uri).body(book);
         }else {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+    }
+
+    @GetMapping("/api/books/{id}")
+    public ResponseEntity<Book> getById(@PathVariable Long id){
+        Optional<Book> book = bookRepository.findById(id);
+        if (book.isPresent()){
+            return ResponseEntity.ok(book.get());
+        }else {
+            return ResponseEntity.notFound().build();
         }
     }
 }

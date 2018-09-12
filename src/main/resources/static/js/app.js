@@ -13,6 +13,11 @@ angular.module('app',['ngRoute','ngResource'])
             controller:'NewController',
             controllerAs:'newCtrl'
         })
+        .when('/details/:id',{
+            templateUrl:'partials/details.html',
+            controller:'DetailsController',
+            controllerAs:'detailsCtrl'
+        })
         .otherwise({
             redirectTo:'/list'
         })
@@ -31,6 +36,9 @@ angular.module('app',['ngRoute','ngResource'])
     this.add = function(book) {
         book.$save();
     }
+    this.get = function (index) {
+        return Book.get({id: index});
+    }
 })
 
 .controller('NewController', function (Books, Book) {
@@ -45,4 +53,10 @@ angular.module('app',['ngRoute','ngResource'])
 .controller('ListController', function (Books) {
     var variable = this;
     variable.books = Books.getAll();
+})
+
+.controller('DetailsController', function ($routeParams, Books) {
+    var variable = this;
+    var index = $routeParams.id;
+    variable.book = Books.get(index);
 });
