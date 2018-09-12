@@ -8,6 +8,11 @@ angular.module('app',['ngRoute','ngResource'])
             controller:'ListController',
             controllerAs:'listCtrl'
         })
+        .when('/new',{
+            templateUrl:'partials/new.html',
+            controller:'NewController',
+            controllerAs:'newCtrl'
+        })
         .otherwise({
             redirectTo:'/list'
         })
@@ -22,6 +27,18 @@ angular.module('app',['ngRoute','ngResource'])
 .service('Books', function(Book) {
     this.getAll = function() {
         return Book.query();
+    }
+    this.add = function(book) {
+        book.$save();
+    }
+})
+
+.controller('NewController', function (Books, Book) {
+    var variable = this;
+    variable.book = new Book();
+    variable.saveBook = function () {
+        Books.add(variable.book);
+        variable.book = new Book();
     }
 })
 
