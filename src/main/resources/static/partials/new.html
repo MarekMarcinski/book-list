@@ -1,0 +1,8 @@
+<h1>Dodaj nową książke</h1>
+
+<form>
+    <input type="text" placeholder="Tytuł" ng-model=newCtrl.book.title><br>
+    <input type="text" placeholder="Autor" ng-model="newCtrl.book.author"><br>
+    <input type="text" placeholder="ISBN" ng-model="newCtrl.book.isbn"><br>
+    <button ng-click="newCtrl.saveBook()">Zapisz książke</button>
+</form>
