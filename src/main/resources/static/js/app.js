@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app',['ngRoute','ngResource'])
-.config(function($routeProvider){
+.config(function($routeProvider, $httpProvider){
     $routeProvider
         .when('/list',{
             templateUrl:'partials/list.html',
@@ -25,7 +25,8 @@ angular.module('app',['ngRoute','ngResource'])
         })
         .otherwise({
             redirectTo:'/list'
-        })
+        });
+    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 })
 
 .constant('BOOK_ENDPOINT','/api/books/:id')
@@ -57,7 +58,7 @@ angular.module('app',['ngRoute','ngResource'])
             },function error(reason) {
                 console.log('Login error');
                 console.log(reason);
-                });
+            });
     }
 })
 
@@ -80,7 +81,7 @@ angular.module('app',['ngRoute','ngResource'])
     var index = $routeParams.id;
     variable.book = Books.get(index);
 })
-    
+
 .controller('AuthenticationController', function ($rootScope, $location, AuthenticationService) {
     var variable = this;
     variable.credentials = {};
