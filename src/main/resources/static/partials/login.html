@@ -1,0 +1,8 @@
+<div ng-show="!authenticated">
+    <h1>Zaloguj się!</h1>
+    <form>
+        <input type="text" ng-model="authCtrl.credentials.username"><br>
+        <input type="password" ng-model="authCtrl.credentials.password">
+        <button ng-click="authCtrl.login()">Zaloguj</button>
+    </form>
+</div>
