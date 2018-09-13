@@ -18,12 +18,18 @@ angular.module('app',['ngRoute','ngResource'])
             controller:'DetailsController',
             controllerAs:'detailsCtrl'
         })
+        .when('/login',{
+            templateUrl:'partials/login.html',
+            controller:'AuthenticationController',
+            controllerAs:'authCtrl'
+        })
         .otherwise({
             redirectTo:'/list'
         })
 })
 
 .constant('BOOK_ENDPOINT','/api/books/:id')
+.constant('LOGIN_ENDPOINT','/login')
 
 .factory('Book', function ($resource,BOOK_ENDPOINT) {
     return $resource(BOOK_ENDPOINT);
@@ -38,6 +44,20 @@ angular.module('app',['ngRoute','ngResource'])
     }
     this.get = function (index) {
         return Book.get({id: index});
+    }
+})
+
+.service('AuthenticationService',function ($http, LOGIN_ENDPOINT) {
+    this.authenticate = function (credentials, successCallBack) {
+        var authHeader = {Authorization:'Basic'+btoa(credentials.username+':'+credentials.password)};
+        var config = {headers:authHeader};
+        $http.post(LOGIN_ENDPOINT,{},config)
+            .then(function success(value) {
+                successCallBack();
+            },function error(reason) {
+                console.log('Login error');
+                console.log(reason);
+                });
     }
 })
 
@@ -59,4 +79,16 @@ angular.module('app',['ngRoute','ngResource'])
     var variable = this;
     var index = $routeParams.id;
     variable.book = Books.get(index);
+})
+    
+.controller('AuthenticationController', function ($rootScope, $location, AuthenticationService) {
+    var variable = this;
+    variable.credentials = {};
+    var loginSuccess = function () {
+        $rootScope.authenticated = true;
+        $location.path('/new');
+    }
+    variable.login = function () {
+        AuthenticationService.authenticate(variable.credentials, loginSuccess());
+    }
 });
