@@ -6,3 +6,7 @@
         <button ng-click="authCtrl.login()">Zaloguj</button>
     </form>
 </div>
+<div ng-show="authenticated">
+    <h2>Czy chcesz się wylogować?</h2>
+    <a href="" ng-click="authCtrl.logout()">Wyloguj się</a>
+</div>
