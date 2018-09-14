@@ -49,12 +49,12 @@ angular.module('app',['ngRoute','ngResource'])
 })
 
 .service('AuthenticationService',function ($http, LOGIN_ENDPOINT) {
-    this.authenticate = function (credentials, successCallBack) {
-        var authHeader = {Authorization:'Basic'+btoa(credentials.username+':'+credentials.password)};
+    this.authenticate = function (credentials, successCallback) {
+        var authHeader = {Authorization: 'Basic ' + btoa(credentials.username+':'+credentials.password)};
         var config = {headers:authHeader};
         $http.post(LOGIN_ENDPOINT,{},config)
             .then(function success(value) {
-                successCallBack();
+                successCallback();
             },function error(reason) {
                 console.log('Login error');
                 console.log(reason);
@@ -90,6 +90,6 @@ angular.module('app',['ngRoute','ngResource'])
         $location.path('/new');
     }
     variable.login = function () {
-        AuthenticationService.authenticate(variable.credentials, loginSuccess());
+        AuthenticationService.authenticate(variable.credentials, loginSuccess);
     }
 });
