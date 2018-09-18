@@ -1,4 +1,4 @@
-package org.marcinski.configuration;
+package org.marcinski.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
