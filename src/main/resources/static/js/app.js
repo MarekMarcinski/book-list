@@ -23,6 +23,11 @@ angular.module('app',['ngRoute','ngResource'])
             controller:'AuthenticationController',
             controllerAs:'authCtrl'
         })
+        .when('/register',{
+            templateUrl:'partials/register.html',
+            controller:'RegisterController',
+            controllerAs:'regCtrl'
+        })
         .otherwise({
             redirectTo:'/list'
         });
@@ -31,9 +36,14 @@ angular.module('app',['ngRoute','ngResource'])
 
 .constant('BOOK_ENDPOINT','/api/books/:id')
 .constant('LOGIN_ENDPOINT','/login')
+.constant('REGISTER_ENDPOINT', '/api/users/:id')
 
 .factory('Book', function ($resource,BOOK_ENDPOINT) {
     return $resource(BOOK_ENDPOINT);
+})
+
+.factory('User', function ($resource,REGISTER_ENDPOINT) {
+    return $resource(REGISTER_ENDPOINT);
 })
 
 .service('Books', function(Book) {
@@ -45,6 +55,12 @@ angular.module('app',['ngRoute','ngResource'])
     }
     this.get = function (index) {
         return Book.get({id: index});
+    }
+})
+
+.service('Users', function(User) {
+    this.addUser = function(user) {
+        user.$save();
     }
 })
 
@@ -91,5 +107,14 @@ angular.module('app',['ngRoute','ngResource'])
     }
     variable.login = function () {
         AuthenticationService.authenticate(variable.credentials, loginSuccess);
+    }
+})
+
+.controller('RegisterController', function (Users, User) {
+    var variable = this;
+    variable.user = new User();
+    variable.register = function () {
+        Users.addUser(variable.user);
+        variable.user = new User();
     }
 });
