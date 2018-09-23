@@ -1,0 +1,10 @@
+<div>
+    <h1>W celu rejestracji podaj dane</h1>
+
+    <form>
+        <input type="text" placeholder="Imie" ng-model=regCtrl.user.name><br>
+        <input type="email" placeholder="Email" ng-model="regCtrl.user.email"><br>
+        <input type="password" placeholder="Hasło" ng-model="regCtrl.user.password"><br>
+        <button ng-click="regCtrl.register()">Rejestracja</button>
+    </form>
+</div>
