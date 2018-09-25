@@ -5,15 +5,13 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "roles")
 @Data
-@Table(name = "books")
-public class Book {
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
-    private String author;
-    private String isbn;
+    private String role;
 }

@@ -1,4 +1,4 @@
-<div ng-show="authenticated">
+<div ng-show="authenticated" class="injection-class">
     <h1>Dodaj nową książke</h1>
 
     <form>
@@ -8,7 +8,11 @@
         <button ng-click="newCtrl.saveBook()">Zapisz książke</button>
     </form>
 </div>
-<div ng-show="!authenticated">
-    <h1>Zaloguj się aby dodać książke!</h1>
-    <a ng-href="#!login">Logowanie</a>
+<div ng-show="!authenticated" class="injection-class">
+
+    <h3>Zaloguj się aby dodać książke!</h3>
+    <a class="btn-primary" role="button" ng-href="#!login">Logowanie</a>
+
+    <h5>Nie masz konta? Zarejestruj się</h5>
+    <a class="btn-primary" role="button" ng-href="#!register">Rejestracja</a>
 </div>
