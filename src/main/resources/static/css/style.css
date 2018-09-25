@@ -1,0 +1,77 @@
+html{
+    position: relative;
+    min-height: 100%;
+    background-color: #1b1e21;
+}
+
+.container-fluid{
+    background-color: #1b1e21;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.container{
+    width: auto;
+    margin-left: auto;
+    padding-bottom: 10px;
+}
+
+.injection-class{
+    text-align: center;
+}
+
+ul {
+    display: inline-block;
+}
+
+.list-div{
+    text-align: left;
+}
+
+.even{
+    background: #FFFFFF;
+}
+
+.odd{
+    background: #FFDEAD;
+    border: 2px solid;
+    border-radius: 4px;
+}
+
+.even:hover{
+    background: #FFFFF0;
+}
+
+.odd:hover{
+    background: #FFFFF0;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=email], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}

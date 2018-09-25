@@ -2,15 +2,28 @@
 <html data-ng-app="app">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" type="text/css" rel="stylesheet">
+
         <title>Lista książek</title>
     </head>
 
     <body>
-        <a href="#!list">Strona główna</a>
-        <a href="#!new">Dodaj nową książkę</a>
+
+        <div class="container-fluid">
+            <a class="btn btn-primary" href="#!list" role="button">Strona główna</a>
+            <a class="btn btn-primary" href="#!new" role="button">Dodaj nową książkę</a>
+        </div>
 
 
-        <div ng-view></div>
+        <div ng-view class="container">
+
+        </div>
+
+        <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+        <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
         <script type="text/javascript" src="bower_components/angular/angular.js"></script>
         <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>

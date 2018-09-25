@@ -117,4 +117,9 @@ angular.module('app',['ngRoute','ngResource'])
         Users.addUser(variable.user);
         variable.user = new User();
     }
+})
+    
+.controller('StyleController', function () {
+    this.even = 'even';
+    this.odd = 'odd'
 });

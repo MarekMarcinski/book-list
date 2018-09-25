@@ -1,6 +1,9 @@
-<h1>Lista wszystkich książek</h1>
-<ul>
-    <li ng-repeat="b in listCtrl.books">
-        <a ng-href="#!details/{{b.id}}">{{b.title}} - {{b.author}} ({{b.isbn}})</a>
-    </li>
-</ul>
+<div class="injection-class">
+    <h1>Lista wszystkich książek</h1>
+    <ul>
+        <div ng-repeat="b in listCtrl.books" ng-controller="StyleController as ctrl"
+             class="list-div" ng-class-even="ctrl.even" ng-class-odd="ctrl.odd">
+            <a ng-href="#!details/{{b.id}}">{{b.title}} - {{b.author}} ({{b.isbn}})</a>
+        </div>
+    </ul>
+</div>

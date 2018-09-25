@@ -2,9 +2,14 @@
     <h1>W celu rejestracji podaj dane</h1>
 
     <form>
-        <input type="text" placeholder="Imie" ng-model=regCtrl.user.name><br>
-        <input type="email" placeholder="Email" ng-model="regCtrl.user.email"><br>
-        <input type="password" placeholder="Hasło" ng-model="regCtrl.user.password"><br>
-        <button ng-click="regCtrl.register()">Rejestracja</button>
+        <label for="fName">Imie</label>
+        <input id="fName" type="text" placeholder="Twoje imie" ng-model=regCtrl.user.name><br>
+
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="Twój email" ng-model="regCtrl.user.email"><br>
+
+        <label for="password">Hasło</label>
+        <input id="password" type="password" placeholder="Podaj swoje hasło" ng-model="regCtrl.user.password"><br>
+        <button class="btn-primary" role="button" ng-click="regCtrl.register()">Rejestracja</button>
     </form>
 </div>
