@@ -83,12 +83,13 @@ angular.module('app',['ngRoute','ngResource'])
     }
 })
 
-.controller('NewController', function (Books, Book) {
+.controller('NewController', function (Books, Book, $location) {
     var variable = this;
     variable.book = new Book();
     variable.saveBook = function () {
         Books.add(variable.book);
         variable.book = new Book();
+        $location.path("/list");
     }
 })
 
@@ -122,12 +123,14 @@ angular.module('app',['ngRoute','ngResource'])
     }
 })
 
-.controller('RegisterController', function (Users, User) {
+.controller('RegisterController', function (Users, User, $location) {
     var variable = this;
     variable.user = new User();
     variable.register = function () {
         Users.addUser(variable.user);
         variable.user = new User();
+        $location.path("/login");
+        alert("konto zostało utworzone");
     }
 })
 
