@@ -1,11 +1,16 @@
-<div ng-show="authenticated" class="injection-class">
+<div ng-show="authenticated">
     <h1>Dodaj nową książke</h1>
 
     <form>
-        <input type="text" placeholder="Tytuł" ng-model=newCtrl.book.title><br>
-        <input type="text" placeholder="Autor" ng-model="newCtrl.book.author"><br>
-        <input type="text" placeholder="ISBN" ng-model="newCtrl.book.isbn"><br>
-        <button ng-click="newCtrl.saveBook()">Zapisz książke</button>
+        <label for="title">Tytuł</label>
+        <input id="title" type="text" placeholder="Tytuł" ng-model=newCtrl.book.title><br>
+
+        <label for="author">Autor</label>
+        <input id="author" type="text" placeholder="Autor" ng-model="newCtrl.book.author"><br>
+
+        <label for="isbn">ISBN</label>
+        <input id="isbn" type="text" placeholder="ISBN" ng-model="newCtrl.book.isbn"><br>
+        <button class="btn btn-primary" ng-click="newCtrl.saveBook()">Zapisz książke</button>
     </form>
 </div>
 <div ng-show="!authenticated" class="injection-class">
