@@ -3,6 +3,8 @@ package org.marcinski.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
 @Entity
@@ -14,8 +16,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Email
+    @NotEmpty
     private String email;
+    @NotEmpty
     private String password;
+    @NotEmpty
     private String name;
     private int active;
 
