@@ -123,21 +123,14 @@ angular.module('app',['ngRoute','ngResource'])
     }
 })
 
-.controller('RegisterController', function (Users, User, $location, $http) {
+.controller('RegisterController', function (Users, User, $location) {
     var variable = this;
     variable.user = new User();
     variable.register = function () {
         Users.addUser(variable.user);
-        $http.post('api/users', variable.user)
-            .then(function success(response) {
-                alert("konto zostało utworzone");
-                $location.path("/login");
-            }, function error(response){
-                alert("wystąpił problem podczas dodawania użytkownika");
-                $location.path("/register");
-            });
         variable.user = new User();
-
+        $location.path("/login");
+        alert("konto zostało utworzone");
     }
 })
 
