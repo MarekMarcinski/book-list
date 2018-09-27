@@ -2,6 +2,7 @@ package org.marcinski.model;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.ISBN;
+import org.marcinski.validator.UniqueIsbn;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -21,5 +22,6 @@ public class Book {
     private String author;
     @NotEmpty
     @ISBN(type = ISBN.Type.ISBN_13)
+    @UniqueIsbn
     private String isbn;
 }
