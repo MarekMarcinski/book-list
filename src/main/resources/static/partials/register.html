@@ -1,15 +1,28 @@
 <div>
     <h1>W celu rejestracji podaj dane</h1>
 
-    <form>
+    <form name="registrationForm">
         <label for="fName">Imie</label>
-        <input id="fName" type="text" placeholder="Twoje imie" ng-model=regCtrl.user.name><br>
+        <input id="fName" type="text" placeholder="Twoje imie" ng-model=regCtrl.user.name ng-required="true" name="name"><br>
+
+        <div ng-show="registrationForm.name.$touched && registrationForm.name.$invalid">
+            <small class="formError">Wprowadź swoje imie!</small>
+        </div>
 
         <label for="email">Email</label>
-        <input id="email" type="email" placeholder="Twój email" ng-model="regCtrl.user.email"><br>
+        <input id="email" type="email" placeholder="Twój email" ng-model="regCtrl.user.email" ng-required="true", name="email"><br>
+
+        <div ng-show="registrationForm.email.$touched && registrationForm.email.$invalid">
+            <small class="formError">Wprowadź swój email!</small>
+        </div>
 
         <label for="password">Hasło</label>
-        <input id="password" type="password" placeholder="Podaj swoje hasło" ng-model="regCtrl.user.password"><br>
-        <button class="btn-primary" role="button" ng-click="regCtrl.register()">Rejestracja</button>
+        <input id="password" type="password" placeholder="Podaj swoje hasło" ng-model="regCtrl.user.password" ng-required="true" name="pass"><br>
+
+        <div ng-show="registrationForm.pass.$touched && registrationForm.pass.$invalid">
+            <small class="formError">Wprowadź swoje hasło!</small>
+        </div>
+
+        <button class="btn-primary" role="button" ng-click="regCtrl.register()" ng-disabled="registrationForm.$invalid ">Rejestracja</button>
     </form>
 </div>
