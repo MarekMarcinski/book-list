@@ -27,7 +27,7 @@ public class BookEndpoint {
 
     @PostMapping("/api/books")
     public ResponseEntity<?> save(@RequestBody Book book) {
-        if (book.getId() == null && book.getIsbn() == null) {
+        if (book.getId() == null && bookRepository.findByIsbn(book.getIsbn())== null){
             Book bookToSave = bookRepository.save(book);
             URI uri = ServletUriComponentsBuilder
                     .fromCurrentRequest()
