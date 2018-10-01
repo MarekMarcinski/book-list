@@ -1,16 +1,29 @@
 <div ng-show="authenticated">
     <h1>Dodaj nową książke</h1>
 
-    <form>
-        <label for="title">Tytuł</label>
-        <input id="title" type="text" placeholder="Tytuł" ng-model=newCtrl.book.title><br>
+    <form name="loginForm">
+        <label for="titleId">Tytuł</label>
+        <input id="titleId" type="text" placeholder="Tytuł" ng-model=newCtrl.book.title ng-required="true" name="title"><br>
 
-        <label for="author">Autor</label>
-        <input id="author" type="text" placeholder="Autor" ng-model="newCtrl.book.author"><br>
+        <div ng-show="loginForm.title.$touched && loginForm.title.$invalid">
+            <small class="formError">Wprowadź tytuł!</small>
+        </div>
 
-        <label for="isbn">ISBN</label>
-        <input id="isbn" type="text" placeholder="ISBN" ng-model="newCtrl.book.isbn"><br>
-        <button class="btn btn-primary" ng-click="newCtrl.saveBook()">Zapisz książke</button>
+        <label for="authorId">Autor</label>
+        <input id="authorId" type="text" placeholder="Autor" ng-model="newCtrl.book.author" ng-required="true" name="author"><br>
+
+        <div ng-show="loginForm.author.$touched && loginForm.author.$invalid">
+            <small class="formError">Wprowadź autora!</small>
+        </div>
+
+        <label for="isbnId">ISBN</label>
+        <input id="isbnId" type="text" placeholder="ISBN" ng-model="newCtrl.book.isbn" ng-required="true" name="isbn"><br>
+
+        <div ng-show="loginForm.isbn.$touched && loginForm.isbn.$invalid">
+            <small class="formError">Wprowadź isbn!</small>
+        </div>
+
+        <button class="btn btn-primary" ng-click="newCtrl.saveBook()" ng-disabled="loginForm.$invalid">Zapisz książke</button>
     </form>
 </div>
 <div ng-show="!authenticated" class="injection-class">
