@@ -1,7 +1,10 @@
 'use strict';
 
 angular.module('app',['ngRoute','ngResource'])
-.config(function($routeProvider, $httpProvider){
+.config(function($routeProvider, $httpProvider, $locationProvider){
+
+    $locationProvider.html5Mode(true);
+
     $routeProvider
         .when('/list',{
             templateUrl:'partials/list.html',

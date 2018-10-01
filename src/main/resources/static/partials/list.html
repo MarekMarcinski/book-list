@@ -3,7 +3,7 @@
     <ul>
         <div ng-repeat="b in listCtrl.books" ng-controller="StyleController as ctrl"
              class="list-div" ng-class-even="ctrl.even" ng-class-odd="ctrl.odd">
-            <a ng-href="#!details/{{b.id}}">{{b.title}} - {{b.author}} ({{b.isbn}})</a>
+            <a ng-href="details/{{b.id}}">{{b.title}} - {{b.author}} ({{b.isbn}})</a>
         </div>
     </ul>
 </div>
