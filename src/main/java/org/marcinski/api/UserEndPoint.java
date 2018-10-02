@@ -35,7 +35,7 @@ public class UserEndPoint {
 
     @PostMapping("api/users")
     public ResponseEntity<?> save(@RequestBody User user){
-        if (user.getId() == null){
+        if (user.getId() == null && userRepository.findByEmail(user.getEmail()) == null){
 
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             user.setActive(1);
